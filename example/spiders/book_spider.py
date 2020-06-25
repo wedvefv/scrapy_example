@@ -37,13 +37,11 @@ class BookSpiderSpider(scrapy.Spider):
 	def parse_book(self, response):
 		# 提取信息
 		item = ExampleItem()
-		print "--------------------"
 		sel = response.css("div.product_main")
 		item["name"] = sel.xpath("./h1/text()").extract_first()
 		item["price"] = sel.xpath("./p[1]/text()").extract()[0]
 		#item["review_rating"] = sel.xpath('./p[3]/@class').re_first("star-rating ([A-Za-z]+)")
 		item["review_rating"] = sel.css('p.star-rating::attr(class)').re_first("star-rating ([A-Za-z]+)")
 		print item, "==================="
-		#yield item
 
 	
