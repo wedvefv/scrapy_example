@@ -31,7 +31,6 @@ class BookSpiderSpider(scrapy.Spider):
 		le = LinkExtractor(restrict_css="ul.pager li.next")
 		links = le.extract_links(response)
 		if links:
-			print links[0].url, "+++++"
 			yield scrapy.Request(links[0].url, callback=self.parse)
 	
 	def parse_book(self, response):
@@ -43,6 +42,14 @@ class BookSpiderSpider(scrapy.Spider):
 		#item["review_rating"] = sel.xpath('./p[3]/@class').re_first("star-rating ([A-Za-z]+)")
 		item["review_rating"] = sel.css('p.star-rating::attr(class)').re_first("star-rating ([A-Za-z]+)")
 		print item, "==================="
-		print "tag4"
+
+		sel = response.css("table.table-striped")
+		item["upc"] = sel.xpath('(.//tr)[1]/td/text()').extract_first()
+		item["stock"] = sel.xpath('(.//tr)[last()-1]/td/text()').re_first("(\d+)")
+		item["review_num"] = sel.xpath('(.//tr)[last()]/td/text()').extract_first()
+		return item
+		# print item
+
+
 
 	

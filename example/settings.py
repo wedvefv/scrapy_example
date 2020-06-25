@@ -10,10 +10,12 @@
 #     https://doc.scrapy.org/en/latest/topics/spider-middleware.html
 
 BOT_NAME = 'example'
-
+LOG_LEVEL = "WARNING"
 SPIDER_MODULES = ['example.spiders']
 NEWSPIDER_MODULE = 'example.spiders'
 
+MONGO_DB_URI = 'mongodb://127.0.0.1:27017/'
+MONGO_DB_NAME = 'scrapy_data'
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'example (+http://www.yourdomain.com)'
@@ -66,6 +68,7 @@ NEWSPIDER_MODULE = 'example.spiders'
 # See https://doc.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
    'example.pipelines.ExamplePipeline': 300,
+   'example.pipelines.MongoPipeline': 300,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)

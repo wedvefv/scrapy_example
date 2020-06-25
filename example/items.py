@@ -14,7 +14,7 @@ class ExampleItem(scrapy.Item):
     name = scrapy.Field()
     price = scrapy.Field() 
     review_rating = scrapy.Field() 
-    # review_num = scrapy.Field() 
-    # upc = scrapy.Field()
-    # stock = scrapy.Field()
+    review_num = scrapy.Field() 
+    upc = scrapy.Field()
+    stock = scrapy.Field()
     
