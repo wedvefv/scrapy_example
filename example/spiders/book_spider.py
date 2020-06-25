@@ -43,5 +43,6 @@ class BookSpiderSpider(scrapy.Spider):
 		#item["review_rating"] = sel.xpath('./p[3]/@class').re_first("star-rating ([A-Za-z]+)")
 		item["review_rating"] = sel.css('p.star-rating::attr(class)').re_first("star-rating ([A-Za-z]+)")
 		print item, "==================="
+		print "tag1"
 
 	
