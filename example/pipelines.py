@@ -8,6 +8,5 @@ import os
 
 class ExamplePipeline(object):
     def process_item(self, item, spider):
-        #print item, ')0000000'
         return item
         
