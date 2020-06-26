@@ -5,7 +5,14 @@
 # Don't forget to add your pipeline to the ITEM_PIPELINES setting
 # See: https://doc.scrapy.org/en/latest/topics/item-pipeline.html
 import pymongo
-import scrapy 
+import scrapy
+from scrapy.pipelines.files import FilesPipeline
+from urlparse import urlparse
+# 解析url得到http， 域名， path， 参数
+
+from os.path import basename, dirname, join
+# basename 文件名
+# dirname 除了文件名的其余部分
 
 class ExamplePipeline(object):
     def process_item(self, item, spider):
@@ -38,4 +45,15 @@ class MongoPipeline(object):
 		coll.insert(post)
 		return item
         
+
+# 重写文件名
+class MyFilesPipeline(FilesPipeline):
+	def file_path(self, request, response=None, info=None):
+		path = urlparse(request.url).path # 域名之后的部分，不含参数
+		print path
+		x = join(basename(dirname(path)), basename(path))
+		print x 
+		return x
+
+
 

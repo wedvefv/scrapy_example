@@ -69,7 +69,8 @@ MONGO_DB_NAME = 'scrapy_data'
 ITEM_PIPELINES = {
    'example.pipelines.ExamplePipeline': 300,
    'example.pipelines.MongoPipeline': 300,
-   'scrapy.pipelines.files.FilesPipeline':1 
+#    'scrapy.pipelines.files.FilesPipeline':1 
+    'example.pipelines.MyFilesPipeline':1 
 }
 FILES_STORE = "/data/pysrc"
 
