@@ -18,3 +18,7 @@ class ExampleItem(scrapy.Item):
     upc = scrapy.Field()
     stock = scrapy.Field()
     
+class MatItem(scrapy.Item):
+	file_urls = scrapy.Field()
+	files = scrapy.Field()
+	

@@ -41,13 +41,13 @@ class BookSpiderSpider(scrapy.Spider):
 		item["price"] = sel.xpath("./p[1]/text()").extract()[0]
 		#item["review_rating"] = sel.xpath('./p[3]/@class').re_first("star-rating ([A-Za-z]+)")
 		item["review_rating"] = sel.css('p.star-rating::attr(class)').re_first("star-rating ([A-Za-z]+)")
-		print item, "==================="
+		# print item, "==================="
 
 		sel = response.css("table.table-striped")
 		item["upc"] = sel.xpath('(.//tr)[1]/td/text()').extract_first()
 		item["stock"] = sel.xpath('(.//tr)[last()-1]/td/text()').re_first("(\d+)")
 		item["review_num"] = sel.xpath('(.//tr)[last()]/td/text()').extract_first()
-		return item
+		yield item
 		# print item
 
 

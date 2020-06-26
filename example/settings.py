@@ -24,7 +24,7 @@ MONGO_DB_NAME = 'scrapy_data'
 # ROBOTSTXT_OBEY = True
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
-#CONCURRENT_REQUESTS = 32
+# CONCURRENT_REQUESTS = 32
 
 # Configure a delay for requests for the same website (default: 0)
 # See https://doc.scrapy.org/en/latest/topics/settings.html#download-delay
@@ -69,7 +69,9 @@ MONGO_DB_NAME = 'scrapy_data'
 ITEM_PIPELINES = {
    'example.pipelines.ExamplePipeline': 300,
    'example.pipelines.MongoPipeline': 300,
+   'scrapy.pipelines.files.FilesPipeline':1 
 }
+FILES_STORE = "/data/pysrc"
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://doc.scrapy.org/en/latest/topics/autothrottle.html
