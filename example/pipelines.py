@@ -50,9 +50,8 @@ class MongoPipeline(object):
 class MyFilesPipeline(FilesPipeline):
 	def file_path(self, request, response=None, info=None):
 		path = urlparse(request.url).path # 域名之后的部分，不含参数
-		print path
+		# 取斜杠分割的最后一个是文件名，倒数第二个部分是目录名（分类）
 		x = join(basename(dirname(path)), basename(path))
-		print x 
 		return x
 
 
