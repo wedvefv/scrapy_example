@@ -22,3 +22,7 @@ class MatItem(scrapy.Item):
 	file_urls = scrapy.Field()
 	files = scrapy.Field()
 	
+
+class ImageItem(scrapy.Item):
+	image_urls = scrapy.Field()
+	image = scrapy.Field()

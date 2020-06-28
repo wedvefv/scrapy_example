@@ -70,9 +70,19 @@ ITEM_PIPELINES = {
    'example.pipelines.ExamplePipeline': 300,
    'example.pipelines.MongoPipeline': 300,
 #    'scrapy.pipelines.files.FilesPipeline':1 
-    'example.pipelines.MyFilesPipeline':1 
+    'example.pipelines.MyFilesPipeline':1 ,
+	'scrapy.pipelines.images.ImagesPipeline':1 
 }
 FILES_STORE = "/data/pysrc"
+IMAGES_STORE = "/data/image"
+
+
+# 开启下载缩略图
+IMAGES_THUMBS = {
+	# 'small':(50, 50),
+	# 'big': (270, 270)
+}
+
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://doc.scrapy.org/en/latest/topics/autothrottle.html
