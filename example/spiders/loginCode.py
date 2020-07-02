@@ -79,4 +79,23 @@ class LoginCodeSpider(scrapy.Spider):
 		img.close()
 		return code 
 
+	# 使用验证码api识别
+	def get_captcha_by_network(self ,data):
+		import request
+		url = 'http://ali-checkcode.showapi.com/checkcode'
+		appcode = "f23cca37f287418a90e2f922649273c4"
+
+		form = {}
+		form["convert_to_jpg"] = '0'
+		form["img_base64"] = base64.b64encode(data)
+		form["typeId"] = '3040'
+		headers = {}
+		headers["Authorization"] = "APPCODE "+ appcode
+		response = requests.post(url, headers = headers, data=formdata)
+		res = response.json()
+
+		if res["showapi_res_code"] == 0:
+			return ret["showapi_res_body"]["result"]
+		return ""
+
 '''
