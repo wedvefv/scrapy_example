@@ -26,3 +26,7 @@ class MatItem(scrapy.Item):
 class ImageItem(scrapy.Item):
 	image_urls = scrapy.Field()
 	image = scrapy.Field()
+
+class JdbookItem(scrapy.Item):
+    name = scrapy.Field()
+    price = scrapy.Field()

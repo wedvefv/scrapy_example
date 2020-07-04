@@ -12,7 +12,7 @@ class SplashSpider(scrapy.Spider):
     def start_requests(self):
         for url in self.start_urls:
             yield SplashRequest(url, args={"images":0})
-
+    
     def parse(self, response):
         for sel in response.css("div.quote"):
             quote = sel.css('span.text::text').extract_first()
