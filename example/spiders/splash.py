@@ -2,7 +2,7 @@
 import scrapy
 from scrapy_splash import SplashRequest
 
-# 使用 splash 渲染js页面
+# 使用 splash 渲染js页面, render.html 端点
 
 class SplashSpider(scrapy.Spider):
     name = 'splash'
