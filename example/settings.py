@@ -51,12 +51,26 @@ MONGO_DB_NAME = 'scrapy_data'
 #SPIDER_MIDDLEWARES = {
 #    'example.middlewares.ExampleSpiderMiddleware': 543,
 #}
+# splash 服务器地址，解析js的
+SPLASH_URL="http://localhost:8050"
+
+# 开启splash的2个下载中间件
 
 # Enable or disable downloader middlewares
 # See https://doc.scrapy.org/en/latest/topics/downloader-middleware.html
-#DOWNLOADER_MIDDLEWARES = {
-#    'example.middlewares.ExampleDownloaderMiddleware': 543,
-#}
+DOWNLOADER_MIDDLEWARES = {
+	'scrapy_splash.SplashCookiesMiddleware': 723,
+	'scrapy_splash.SplashMiddleware': 725,
+	'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware': 727
+}
+
+
+# 设置去冲重过滤器
+DUPEFILTER_CLASS="scrapy_splash.SplashAwareDupeFilter"
+# 用来支持cache_args(可选)
+SPIDER_MIDDLEWARES = {
+	'scrapy_splash.SplashDeduplicateArgsMiddleware': 900
+}
 
 # Enable or disable extensions
 # See https://doc.scrapy.org/en/latest/topics/extensions.html
@@ -75,7 +89,6 @@ ITEM_PIPELINES = {
 }
 FILES_STORE = "/data/pysrc"
 IMAGES_STORE = "/data/image"
-
 
 # 开启下载缩略图
 IMAGES_THUMBS = {
